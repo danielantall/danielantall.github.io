@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO Hockey - Contact/FAQ</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./merch.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-logo">
+            <img src="https://via.placeholder.com/50" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="#about">About Us</a>
+            <a href="#team">Programs</a>
+            <a href="#partners">Merchandise</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact Us/FAQs</a>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-button">Sign in</button>
+            <button class="nav-button register-button">Register</button>
+        </div>
+    </nav>
+    <header>
+        <h1>MEERCHANDISE</h1>
+    </header>
+
+    <div class="apparel-box">
+        <p>CHECK OUT OUR APPAREL</p>
+        <a href="purchase-link" class="purchase-link">Click here to purchase</a>
+    </div>
+
+    <div id="imageOverlay" class="image-overlay">
+        <span class="close-button" onclick="closeOverlay()">×</span>
+        <img id="fullViewImage" class="full-view-image" src="" alt="Full view">
+    </div>
+
+    <div class="merchandise-container">
+        <div class="apparel-item">
+            <!-- <h3>FRONT</h3> -->
+            <img src="../clothing_photos/boston.webp" alt="Front view of sweater" class="apparel-image" onclick="openOverlay(this.src)">
+            <div class="price-box">
+                <p>$39.99</p>
+                <p>Boston Jersey</p>
+            </div>
+        </div>
+        <div class="apparel-item">
+            <!-- <h3>BACK</h3> -->
+            <img src="../clothing_photos/ottawa.webp" alt="Back view of sweater" class="apparel-image" onclick="openOverlay(this.src)">
+            <div class="price-box">
+                <p>$39.99</p>
+                <p>Ottawa Jersey</p>
+            </div>
+        </div>
+        <div class="apparel-item">
+            <!-- <h3>FRONT</h3> -->
+            <img src="../clothing_photos/philly.webp" alt="Front view of T-shirt" class="apparel-image" onclick="openOverlay(this.src)">
+            <div class="price-box">
+                <p>$39.99</p>
+                <p>Philadelphia Jersey</p>
+            </div>
+        </div>
+        <div class="apparel-item">
+            <!-- <h3>BACK</h3> -->
+            <img src="../clothing_photos/pitts.webp" alt="Back view of T-shirt" class="apparel-image" onclick="openOverlay(this.src)">
+            <div class="price-box">
+                <p>$39.99</p>
+                <p>Pittsburgh Jersey</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <!-- FAQ Area-->
+        <div class="col-12 col-sm-10 col-lg-8">
+            <h3 class="text-center mb-4">Sizing Chart</h3>
+            <div class="accordion faq-accordian" id="faqAccordion">
+                <!-- Sizing Chart Item -->
+                <div class="card border-0 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="card-header" id="headingSizingChart">
+                        <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseSizingChart" aria-expanded="false" aria-controls="collapseSizingChart">
+                            View Sizing Chart
+                            <span class="lni-chevron-up"></span>
+                        </h6>
+                    </div>
+                    <div class="collapse" id="collapseSizingChart" aria-labelledby="headingSizingChart" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            <img src="../clothing_photos/sizing_chart.jpg" alt="Sizing Chart" class="sizing-chart-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer role="contentinfo">
+        <p>&copy; 2024 Our Organization</p>
+        <div>
+            <a href="#about">About Us</a>
+            <a href="#team">Our Team</a>
+            <a href="#partners">Sponsors & Partners</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js"></script>
+    <script src= "./merch.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
