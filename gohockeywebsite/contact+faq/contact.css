@@ -261,23 +261,92 @@ header h1 {
     margin-bottom: 0;
 }
 
-footer {
-    background-color: #5e00c7;
-    color: #ffffff;
-    padding: 2em;
-    text-align: center;
-    width: 100%;
-    
+.custom-footer {
+    background-color: #f8f9fa; /* Light background color */
+    border-top: 1px dashed #d3adf2; /* Dashed top border similar to image */
+    padding: 40px 20px;
 }
 
-footer a {
-    color: #ffffff;
+.custom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.custom-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Logo Section */
+.footer-logo-section {
+    flex: 1 1 100px;
+}
+
+.footer-logo {
+    max-width: 100px;
+}
+
+/* Social Media Icons */
+.footer-social-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.social-icon img {
+    width: 24px; /* Icon size */
+    height: 24px;
+}
+
+/* Footer Column Styles */
+.footer-column {
+    flex: 1 1 160px;
+}
+
+.footer-column h5 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.footer-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-list li {
+    margin-bottom: 8px;
+}
+
+.footer-list a {
+    color: #333;
     text-decoration: none;
-    margin: 0 0.5em;
 }
 
-footer a:hover {
+.footer-list a:hover {
     text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .custom-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column,
+    .footer-logo-section,
+    .footer-social-section {
+        flex: 1 1 100%;
+    }
+
+    .footer-logo {
+        margin-bottom: 20px;
+    }
 }
 h1{
     font-size:  75px;
