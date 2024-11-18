@@ -37,6 +37,4 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0 });
 
-//Observe each FAQ item individually
-faqItems.forEach(item => observer.observe(item));
 

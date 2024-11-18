@@ -68,66 +68,94 @@ body{
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background-color: #ffffff;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Navbar Base */
+.custom-navbar {
     background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 1em 2em;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* Logo */
 .nav-logo {
     display: flex;
     align-items: center;
 }
 
-.nav-logo img {
-    width: 50px;
+.topleftlogo {
+    max-width: 1vw;
+    width: auto;
     height: auto;
 }
 
-.nav-links {
-    display: flex;
-    gap: 1.5em;
-    justify-content: flex-end;
-}
-
-.nav-links a {
-    color: #000000;
-    text-decoration: none;
+/* Navbar Links with Synchronized Animation */
+.nav-links .nav-item .nav-link {
+    display: inline-block;
     font-weight: 500;
-    transition: transform 0.5s ease-in-out, color 0.5s ease-in-out;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden; 
+    transition: color 0.3s ease-in-out; 
 }
 
-.nav-links a:hover {
+.nav-links .nav-item .nav-link:hover {
+    color: #5e00c7;
+}
+
+.nav-links .nav-item .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%; 
+    bottom: 0; 
+    width: 0; 
+    height: 2px; 
+    background-color: #5e00c7; 
+    transition: width 0.4s ease, transform 0.4s ease; 
+    transform: translateX(-50%); 
+}
+
+.nav-links .nav-item .nav-link:hover::after {
+    width: 100%; 
+    transform: translateX(-50%); 
+}
+
+.nav-links .nav-item .nav-link:not(:hover)::after {
+    transition: width 0.4s ease, transform 0.4s ease; 
+    width: 0; 
+}
+.navbar-toggler {
+    outline: none; 
+    box-shadow: none; 
+    background-color: transparent; 
+    transition: transform 0.3s ease; 
+}
+
+.navbar-toggler:hover {
     transform: scale(1.1);
 }
 
+/* Navbar Buttons */
 .nav-buttons {
     display: flex;
     gap: 1em;
-    justify-content: flex-end;
 }
 
 .nav-button {
     padding: 0.5em 1em;
     border: 1px solid #cccccc;
     border-radius: 4px;
-    cursor: pointer;
     background-color: #ffffff;
     font-weight: bold;
-    transition: transform 0.5s ease-in-out, color 0.5s ease-in-out;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .nav-button:hover {
@@ -139,12 +167,25 @@ nav {
     background-color: #5e00c7;
     color: #ffffff;
     border: none;
-    transition: transform 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 .register-button:hover {
     background-color: #4b009c;
-    transform: scale(1.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .topleftlogo {
+        max-width: 80px;
+    }
+
+    .custom-navbar {
+        padding: 1em;
+    }
+
+    .nav-buttons {
+        gap: 0.5em;
+    }
 }
 
 header {

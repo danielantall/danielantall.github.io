@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    font-family: "Roboto", sans-serif;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -13,44 +12,74 @@ body {
     box-sizing: border-box;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.custom-navbar {
     background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 1em 2em;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* Logo */
 .nav-logo {
     display: flex;
     align-items: center;
 }
 
-.nav-logo img {
-    width: 50px;
+.topleftlogo {
+    max-width: 1vw;
+    width: auto;
     height: auto;
 }
 
-.nav-links {
-    display: flex;
-    gap: 1.5em;
-}
-
-.nav-links a {
-    color: #000000;
-    text-decoration: none;
+/* Navbar Links with Synchronized Animation */
+.nav-links .nav-item .nav-link {
+    display: inline-block;
     font-weight: 500;
-    transition: transform 0.5s ease-in-out, color 0.5s ease-in-out;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden; /* Clip the underline effect */
+    transition: color 0.3s ease-in-out; /* Smooth text color transition */
 }
 
-.nav-links a:hover {
-    transform: scale(1.1);
+.nav-links .nav-item .nav-link:hover {
+    color: #5e00c7; /* Change text color on hover */
 }
 
+.nav-links .nav-item .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%; /* Start underline from the center */
+    bottom: 0; /* Position at the bottom of the text */
+    width: 0; /* Initially no width */
+    height: 2px; /* Thickness of the underline */
+    background-color: #5e00c7; /* Your theme color */
+    transition: width 0.4s ease, transform 0.4s ease; /* Smooth width and transform animation */
+    transform: translateX(-50%); /* Center align starting point */
+}
+
+.nav-links .nav-item .nav-link:hover::after {
+    width: 100%; /* Expand underline to the full width of the word */
+    transform: translateX(-50%); /* Keep it centered while growing */
+}
+
+.nav-links .nav-item .nav-link:not(:hover)::after {
+    transition: width 0.4s ease, transform 0.4s ease; /* Smooth reset transition */
+    width: 0; /* Shrink underline back to 0 */
+}
+.navbar-toggler {
+    outline: none; /* Removes the focus outline */
+    box-shadow: none; /* Removes any shadow */
+    background-color: transparent; /* Ensures no background */
+    transition: transform 0.3s ease; /* Smooth hover scaling */
+}
+
+.navbar-toggler:hover {
+    transform: scale(1.1); /* Scale slightly on hover */
+}
+
+/* Navbar Buttons */
 .nav-buttons {
     display: flex;
     gap: 1em;
@@ -60,10 +89,10 @@ nav {
     padding: 0.5em 1em;
     border: 1px solid #cccccc;
     border-radius: 4px;
-    cursor: pointer;
     background-color: #ffffff;
     font-weight: bold;
-    transition: transform 0.5s ease-in-out, color 0.5s ease-in-out;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .nav-button:hover {
@@ -80,6 +109,22 @@ nav {
 .register-button:hover {
     background-color: #4b009c;
 }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .topleftlogo {
+        max-width: 80px;
+    }
+
+    .custom-navbar {
+        padding: 1em;
+    }
+
+    .nav-buttons {
+        gap: 0.5em;
+    }
+}
+
 
 header {
     text-align: center;
