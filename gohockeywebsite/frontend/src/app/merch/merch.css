@@ -1,0 +1,502 @@
+body {
+    margin: 0;
+    font-family: "Funnel Sans";
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+    
+    
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Navbar Base */
+.custom-navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 1em 2em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo */
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.topleftlogo {
+    max-width: 1vw;
+    width: auto;
+    height: auto;
+}
+
+/* Navbar Links with Synchronized Animation */
+.nav-links .nav-item .nav-link {
+    display: inline-block;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden; /* Clip the underline effect */
+    transition: color 0.3s ease-in-out; /* Smooth text color transition */
+}
+
+.nav-links .nav-item .nav-link:hover {
+    color: #5e00c7; /* Change text color on hover */
+}
+
+.nav-links .nav-item .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%; /* Start underline from the center */
+    bottom: 0; /* Position at the bottom of the text */
+    width: 0; /* Initially no width */
+    height: 2px; /* Thickness of the underline */
+    background-color: #5e00c7; /* Your theme color */
+    transition: width 0.4s ease, transform 0.4s ease; /* Smooth width and transform animation */
+    transform: translateX(-50%); /* Center align starting point */
+}
+
+.nav-links .nav-item .nav-link:hover::after {
+    width: 100%; /* Expand underline to the full width of the word */
+    transform: translateX(-50%); /* Keep it centered while growing */
+}
+
+.nav-links .nav-item .nav-link:not(:hover)::after {
+    transition: width 0.4s ease, transform 0.4s ease; /* Smooth reset transition */
+    width: 0; /* Shrink underline back to 0 */
+}
+.navbar-toggler {
+    outline: none; /* Removes the focus outline */
+    box-shadow: none; /* Removes any shadow */
+    background-color: transparent; /* Ensures no background */
+    transition: transform 0.3s ease; /* Smooth hover scaling */
+}
+
+.navbar-toggler:hover {
+    transform: scale(1.1); /* Scale slightly on hover */
+}
+
+/* Navbar Buttons */
+.nav-buttons {
+    display: flex;
+    gap: 1em;
+}
+
+.nav-button {
+    padding: 0.5em 1em;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.nav-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.register-button {
+    background-color: #5e00c7;
+    color: #ffffff;
+    border: none;
+}
+
+.register-button:hover {
+    background-color: #4b009c;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .topleftlogo {
+        max-width: 80px;
+    }
+
+    .custom-navbar {
+        padding: 1em;
+    }
+
+    .nav-buttons {
+        gap: 0.5em;
+    }
+}
+
+
+header {
+    text-align: center;
+    padding: 100px;
+    background-color: #f0f0f0;
+}
+
+header h1 {
+    font-size: 75px;
+    letter-spacing: -6px;
+    color: #5e00c7;
+    margin: 0;
+    font-weight: 700;
+    font-family: "Funnel Sans";
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 50px; /* Reduce font size */
+        letter-spacing: -3px; /* Adjust spacing */
+    }
+}
+
+/* Resize for small screens */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 30px; /* Further reduce font size */
+        letter-spacing: -1px; /* Adjust spacing */
+        word-wrap: break-word; /* Ensure text breaks if necessary */
+    }
+}
+
+.purchase-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #5e00c7;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.purchase-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #5e00c7;
+    transition: width 0.4s ease, left 0.4s ease;
+    transform: translateX(-50%);
+}
+
+.purchase-link:hover::after {
+    width: 100%;
+}
+
+.merchandise-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Default to 2 columns */
+    gap: 60px;
+    padding: 20px 20px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
+.apparel-item {
+    text-align: center;
+    width: 100%; 
+}
+
+.apparel-image {
+    width: 100%;
+    height: auto; 
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.apparel-image:hover {
+    transform: scale(1.02); 
+}
+
+@media (max-width: 992px) {
+    .merchandise-container {
+        grid-template-columns: 1fr 1fr; 
+    }
+}
+
+@media (max-width: 768px) {
+    .merchandise-container {
+        grid-template-columns: 1fr;
+    }
+
+    .price-box p {
+        font-size: 0.9rem;
+    }
+
+    .apparel-item h3 {
+        font-size: 1rem;
+    }
+}
+
+
+.image-overlay {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Styling for the full-view image */
+.full-view-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sizing-chart-image {
+    width: 100%; /* Adjusts to the container width */
+    max-width: 600px; /* Sets a max width for large screens */
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5%;
+}
+
+.price-box {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.price-box p {
+    margin: 5px 0;
+}
+
+.apparel-box {
+    background-color: #f5f5f5;
+    border: 2px solid #5e00c7;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    max-width: 300px;
+    margin: 40px auto;
+    font-weight: bold;
+    color: #5e00c7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.apparel-box p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.section_padding_130 {
+    padding-top: 5%;
+    padding-bottom: 50%;
+}
+
+.faq_area {
+    position: relative;
+    z-index: 1;
+    background-color: #f5f5ff;
+}
+
+.faq-accordian {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 5%;
+}
+
+/* Card styling with hover animation */
+.faq-accordian .card {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.faq-accordian .card:hover .card-header h6 {
+    color: #5e00c7; /* Change text to purple on card hover */
+}
+
+.faq-accordian .card:last-child {
+    margin-bottom: 0;
+}
+
+.faq-accordian .card .card-header {
+    background-color: #ffffff;
+    padding: 0;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for the entire card header (bar) */
+.faq-accordian .card .card-header:hover {
+    background-color: #f0f0ff; /* Light purple background on hover */
+    transform: scale(1.02); /* Slightly enlarge the header on hover */
+}
+
+/* Accordion header text color and hover transition */
+.faq-accordian .card .card-header h6 {
+    cursor: pointer;
+    padding: 1.75rem 2rem;
+    color: #5e00c7; /* Default purple color for text */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color 0.3s ease;
+}
+
+.faq-accordian .card .card-header h6:hover {
+    color: #4b009c; /* Darker purple on direct hover */
+}
+
+.faq-accordian .card .card-header h6 span {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+/* Color for collapsed (non-expanded) state */
+.faq-accordian .card .card-header h6.collapsed {
+    color: black;
+}
+
+.faq-accordian .card .card-header h6.collapsed span {
+    transform: rotate(-180deg);
+}
+
+/* Card body padding */
+.faq-accordian .card .card-body {
+    padding: 1.75rem 2rem;
+}
+
+/* Sizing chart image styling */
+.sizing-chart-image {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    
+}
+
+
+/* Sizing Chart title style */
+h3.text-center.mb-4 {
+    color: #5e00c7; /* Purple color for Sizing Chart header */
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+
+
+.custom-footer {
+    background-color: #f8f9fa; /* Light background color */
+    border-top: 1px dashed #d3adf2; /* Dashed top border similar to image */
+    padding: 40px 20px;
+}
+
+.custom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.custom-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Logo Section */
+.footer-logo-section {
+    flex: 1 1 100px;
+}
+
+.footer-logo {
+    max-width: 100px;
+}
+
+/* Social Media Icons */
+.footer-social-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.social-icon img {
+    width: 24px; /* Icon size */
+    height: 24px;
+}
+
+/* Footer Column Styles */
+.footer-column {
+    flex: 1 1 160px;
+}
+
+.footer-column h5 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.footer-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-list li {
+    margin-bottom: 8px;
+}
+
+.footer-list a {
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-list a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .custom-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column,
+    .footer-logo-section,
+    .footer-social-section {
+        flex: 1 1 100%;
+    }
+
+    .footer-logo {
+        margin-bottom: 20px;
+    }
+}
+
+
