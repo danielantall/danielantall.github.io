@@ -197,6 +197,7 @@ header {
 header h1 {
     font-size: 75px;
     letter-spacing: -6px;
+    font-weight: 700;
     color: #5e00c7;
     margin: 0;
 }

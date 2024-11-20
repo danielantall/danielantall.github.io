@@ -119,12 +119,13 @@ main {
     padding: 2em;
 }
 .section-title {
-    font-size: 2em;
-    font-weight: bold;
+    font-size: 2.5em;
+    font-weight: 800;
     text-align: center;
-    color: black;
-    margin-bottom: 1em;
-    letter-spacing:  -2px;
+    font-size: 2.5em;
+    font-weight: 800;
+    color: #5e00c7;
+    margin-bottom:5%;
 }
 .team-member, .partner {
     background-color: #ffffff;
@@ -152,16 +153,10 @@ main {
 footer {
     background-color: #5e00c7;
     color: #ffffff;
+    text-align: left;
     padding: 2em;
 }
-footer a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 0.5em;
-}
-footer a:hover {
-    text-decoration: underline;
-}
+
 .custom-footer {
     background-color: #f8f9fa; /* Light background color */
     border-top: 1px dashed #d3adf2; /* Dashed top border similar to image */
