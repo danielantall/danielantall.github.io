@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "program": "Math Tutoring",
+        "parents": [ 
+            {
+                "first_name": "John",
+                "last_name": "Doe",
+                "phone": "123-456-7890",
+                "payment_email": "john.doe@example.com"
+            },
+            {
+                "first_name": "Jane",
+                "last_name": "Doe",
+                "phone": "987-654-3210"
+            }
+        ],
+        "children": [
+            {
+                "first_name": "Emily",
+                "last_name": "Doe",
+                "birth_year": 2012,
+                "division_level": "Peewee",
+                "hockey_org": "City Youth Hockey Club",
+                "position": "Forward",
+                "medical_concerns": "None"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "program": "Science Camp",
+        "parents": [
+            {
+                "first_name": "Michael",
+                "last_name": "Smith",
+                "phone": "222-333-4444",
+                "payment_email": "michael.smith@example.com"
+            },
+            {
+                "first_name": "Laura",
+                "last_name": "Smith",
+                "phone": "555-666-7777"
+            }
+        ],
+        "children": [
+            {
+                "first_name": "Oliver",
+                "last_name": "Smith",
+                "birth_year": 2014,
+                "division_level": "Atom",
+                "hockey_org": "North Stars Hockey League",
+                "position": "Defense",
+                "medical_concerns": "Asthma"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "program": "Hockey Training",
+        "parents": [
+            {
+                "first_name": "David",
+                "last_name": "Johnson",
+                "phone": "444-555-6666",
+                "payment_email": "david.johnson@example.com"
+            },
+            {
+                "first_name": "Susan",
+                "last_name": "Johnson",
+                "phone": "888-999-0000"
+            }
+        ],
+        "children": [
+            {
+                "first_name": "Lucas",
+                "last_name": "Johnson",
+                "birth_year": 2013,
+                "division_level": "Bantam",
+                "hockey_org": "Eastside Hockey Association",
+                "position": "Goalie",
+                "medical_concerns": "Peanut Allergy"
+            }
+        ]
+    }
+]

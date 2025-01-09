@@ -456,21 +456,6 @@ a {
     flex-direction: column; /* Stack elements properly */
 }
 
-.btn{
-    padding: 0.5em 1em;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.5s ease-in-out,   0.5s ease-in-out;
-    background-color: rgb(68, 177, 68);
-    color: white;
-    padding: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 30px;
-    max-height: 40x;
-}
 
 .row {
     width: 100%; 
@@ -575,6 +560,51 @@ a {
         margin-bottom: 20px;
     }
 }
-.accordion{
+.accordion {
     margin: 20px 100px !important;
+}
+
+.table-header, .table-row {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto; /* Match grid layout between header and rows */
+    gap: 20px; /* Adjust for uniform spacing */
+    padding: 10px;
+    align-items: center; /* Align items vertically */
+    border-bottom: 1px solid #ddd; /* Optional - add a line to separate rows */
+}
+
+.table-header {
+    font-weight: bold;
+    background-color: #f8f9fa;
+}
+
+.accordion-button {
+    justify-self: center; /* Align the accordion button to the center of its column */
+}
+
+.table-column {
+    padding-right: 5px;
+}
+.accordion-column{
+    padding-right: 5px;
+    text-align: left;
+    padding-left: 40px;
+}
+
+.hide {
+    display: none;
+}
+input::placeholder {
+    color: rgb(0, 0, 0);
+    padding: 30px 10px;
+    font-family: Funnel Sans;
+}
+input {
+    border: 1px solid grey;
+    background: #e2e3e6;
+    border-radius: 10px;
+
+}
+.child-card {
+    display: inline-block;
 }

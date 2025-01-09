@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./progr+admin.css">
+    <link rel="stylesheet" href="./admin.css">
 </head>
 <body>
 
@@ -67,10 +67,121 @@
       <div class="container-s">
             <h2 style="margin: 20px 120px">Dashboard</h2>
       </div>
-
-     
-    <div></div>
+      <div class="container mt-4">
+        <div class="row">
+            <div class="col offset-md-10">
+                <div class="search-wrapper">
+                    <label for="search"></label>
+                    <input type="search" id="search" placeholder="Search Here" program-search>
+                </div>
+            </div>
+        </div>
+      </div>
       
+      
+      <div class="vstack gap-1" id="programContainer">
+        <div class="container mt-4">
+            <!-- Table Header Section -->
+            <div class="table-header">
+                <div class="table-column">Parent Name</div>
+                <div class="table-column">Last Name</div>
+                <div class="table-column">Program Name</div>
+                <div class="table-column">Payment Status</div>
+                <div class="table-column">&nbsp;</div>
+            </div>
+          </div>
+        <div class="accordion" id="programAccordion">
+            <!-- Accordion Row Example 1 -->
+            <div class="accordion-item">
+                <div class="table-row">
+                    <div class="accordion-column" id="firstName">Joe</div>
+                    <div class="accordion-column" id="lastName">Doe</div>
+                    <div class="accordion-column" id="program">17U Hockey Snipe</div>
+                    <div class="accordion-column">
+                        <button type="button" class="btn btn-warning" id="status">Pending</button>
+                    </div>
+                    <div class="table-column">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRow1" aria-expanded="false" aria-controls="collapseRow1">
+                        </button>
+                    </div>
+                </div>
+                <div id="collapseRow1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p><strong>Parent Details:</strong></p>
+                        <p class="child-card">Payment Email:</p>
+                        <p id="email">placeholder@gmail.com</p>
+                        <p class="child-card">Phone:</p>
+                        <p id="phone">647 ...</p>
+                        <p><strong>Child Details:</strong></p>
+                        <p class="child-card">First Name:</p>
+                        <p id="childFirstName">Joe</p>
+                        <p class="child-card">Last Name:</p>
+                        <p id="chilLastName">Doe</p>
+                        <p class="child-card">Birth Year:</p>
+                        <p id="birthYear">2010</p>
+                        <p class="child-card">Division:</p>
+                        <p id="division">17U</p>
+                        <p class="child-card">Hockey Organization:</p>
+                        <p id="hockeyOrg"></p>
+                        <p class="child-card">Position:</p>
+                        <p id="position"></p>
+                        <p class="child-card">Medical Concerns:</p>
+                        <p id="medicalConcerns"></p>
+
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Additional Accordion Rows can be added in a similar way -->
+        </div>
+      </div>
+    <template program-template>
+        <div class="accordion" id="programAccordion">
+            <!-- Accordion Row Example 1 -->
+            <div class="accordion-item">
+                <div class="table-row">
+                    <div class="accordion-column" id="firstName"></div>
+                    <div class="accordion-column" id="lastName"></div>
+                    <div class="accordion-column" id="program"></div>
+                    <div class="accordion-column">
+                        <button type="button" class="btn btn-warning" id="status">Pending</button>
+                    </div>
+                    <div class="table-column">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRow1" aria-expanded="false" aria-controls="collapseRow1">
+                        </button>
+                    </div>
+                </div>
+                <div id="collapseRow1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p><strong>Parent Details:</strong></p>
+                        <p class="child-card">Payment Email:</p>
+                        <p id="email"></p>
+                        <p class="child-card">Phone:</p>
+                        <p id="phone"></p>
+                        <p><strong>Child Details:</strong></p>
+                        <p class="child-card">First Name:</p>
+                        <p id="childFirstName"></p>
+                        <p class="child-card">Last Name:</p>
+                        <p id="chilLastName"></p>
+                        <p class="child-card">Birth Year:</p>
+                        <p id="birthYear"></p>
+                        <p class="child-card">Division:</p>
+                        <p id="division"></p>
+                        <p class="child-card">Hockey Organization:</p>
+                        <p id="hockeyOrg"></p>
+                        <p class="child-card">Position:</p>
+                        <p id="position"></p>
+                        <p class="child-card">Medical Concerns:</p>
+                        <p id="medicalConcerns"></p>
+
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Additional Accordion Rows can be added in a similar way -->
+        </div>
+    </template>
+    
       
       
     <!-- Footer -->
@@ -134,8 +245,8 @@
             </div>
         </div>
     </footer>
-    
-
+    <script src="program-api.js" defer></script>
+    <script src= "button.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js"></script>
     <script src="./mainpage.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
