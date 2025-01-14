@@ -1,37 +1,121 @@
+/* General Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px; /* Smaller base font size */
+    color: #333;
+}
+
+/* Container Styling */
 .container {
     margin-top: 20px;
+    max-width: 800px; /* Reduced width */
+    width: 90%; /* Use 90% of the browser width */
+    margin-left: auto;
+    margin-right: auto;
 }
-.guardian-header {
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-.guard {
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
+
+
+/* Form Section */
 .form-section {
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 10px; /* Smaller padding */
+    margin-bottom: 12px; /* Reduced margin */
+    background-color: #f9f9f9;
+    font-size: 0.85rem; /* Smaller font size */
 }
+
 .form-section h3 {
-    margin-bottom: 20px;
+    font-size: 1.2rem; /* Reduced font size */
     text-align: center;
+    margin-bottom: 15px;
 }
-.child-container, .guardian-container {
-    border: 1px dashed #999;
-    padding: 15px;
-    margin-bottom: 10px;
+
+/* Guardian and Child Labels */
+.child-container label,
+.guardian-container label {
+    font-size: 1rem; /* Much smaller label font size */
+    font-weight: bold;
+    color: #333; /* Optional: Set a darker color for better visibility */
+    margin-bottom: 4px; /* Add spacing between the label and the field */
+    display: block; /* Ensure labels are block elements */
+}
+
+/* Input Fields */
+.form-control {
+    font-size: 0.85rem; /* Smaller font size */
+    padding: 6px; /* Reduced padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    border-color: #5e00c7;
+    box-shadow: 0 0 5px rgba(94, 0, 199, 0.5);
+}
+
+/* Buttons */
+button.add-btn,
+button.remove-btn,
+button.btn-success {
+    background-color: #5e00c7;
+    color: white;
+    font-size: 0.85rem; /* Reduced font size */
+    padding: 6px 12px; /* Reduced padding */
+    border: none;
+    border-radius: 5px;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+button.add-btn:hover,
+button.remove-btn:hover,
+button.btn-success:hover {
+    background-color: #4b009d; /* Darker hover color */
+    transform: scale(1.05);
+}
+
+/* Guardian and Child Containers */
+.child-container,
+.guardian-container {
+    border: 2px;
+    padding: 12px; /* Smaller container padding */
+    margin-bottom: 12px;
     border-radius: 8px;
 }
-.add-btn, .remove-btn, .btn-success {
-    background-color: #5e00c7;
-    color: #fff;
-    border: none;
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+
+/* Save Button */
+.save-button {
+    margin-top: 20px;
+    text-align: center;
 }
-.add-btn:hover, .remove-btn:hover, .btn-success:hover {
-    background-color: #4b009d;
-    transform: scale(1.1);
+
+/* Header Styling */
+.guard {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    font-size: 1.4rem; /* Much smaller main header */
+    text-align: center;
+    font-weight: bold;
 }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        font-size: 10px; /* Even smaller font size for mobile */
+    }
+
+    .form-section h3 {
+        font-size: 1rem; /* Smaller section headers for mobile */
+    }
+
+    button.add-btn,
+    button.remove-btn,
+    button.btn-success {
+        font-size: 0.7rem; /* Smaller button text on mobile */
+    }
+}
+
+
