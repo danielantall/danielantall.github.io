@@ -135,6 +135,10 @@ addGuardianBtn.addEventListener("click", () => {
       <label for="guardianEmail-${guardianCount}" class="form-label">Email:</label>
       <input type="email" class="form-control" id="guardianEmail-${guardianCount}" placeholder="Enter email">
     </div>
+    <div class="mb-3">
+      <label for="guardianPostalCode-${guardianCount}" class="form-label">Postal Code:</label>
+      <input type="text" class="form-control" id="guardianPostalCode-${guardianCount}" placeholder="Enter postal code">
+    </div>
     <button class="btn btn-danger remove-btn" onclick="removeElement('guardian-${guardianCount}')">Remove Guardian</button>
   `;
 
@@ -143,6 +147,7 @@ addGuardianBtn.addEventListener("click", () => {
   validateAddChildButton();
   validateSaveButton();
 });
+
 
 /********************************************************
  * REMOVE ELEMENT BY ID
@@ -169,6 +174,7 @@ saveBtn.addEventListener("click", () => {
       lastName: document.getElementById(`guardianLastName-${guardianId}`).value,
       phone: document.getElementById(`guardianPhone-${guardianId}`).value,
       email: document.getElementById(`guardianEmail-${guardianId}`).value,
+      postalCode: document.getElementById(`guardianPostalCode-${guardianId}`).value,  // Add postal code
     });
   });
 

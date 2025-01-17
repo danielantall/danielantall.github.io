@@ -23,6 +23,11 @@ function createGuardianHTML(guardianCount) {
             <label for="guardianEmail-${guardianCount}" class="form-label">Email:</label>
             <input type="email" class="form-control" id="guardianEmail-${guardianCount}" placeholder="Enter email" disabled>
         </div>
+        <!-- Add Postal Code Field here -->
+        <div class="mb-3">
+            <label for="guardianPostalCode-${guardianCount}" class="form-label">Postal Code:</label>
+            <input type="text" class="form-control" id="guardianPostalCode-${guardianCount}" placeholder="Enter postal code" disabled>
+        </div>
         <button class="btn btn-danger remove-btn" onclick="removeElement('guardian-${guardianCount}')" style="display: none;">Remove Guardian</button>
     `;
 }
@@ -74,7 +79,7 @@ function createChildHTML(childCount) {
 * TOGGLE EDIT MODE
 ********************************************************/
 function toggleEditable(editable) {
-    // Ensure username, email, guardian, and child fields are editable/locked
+    // Ensure username, email, postal code, guardian, and child fields are editable/locked
     document.querySelectorAll(`
         #profileFields input,
         .guardian-container input,
@@ -321,6 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
         guardianDiv.querySelector(`#guardianLastName-${guardianCount}`).value = guardian.lastName;
         guardianDiv.querySelector(`#guardianPhone-${guardianCount}`).value = guardian.phone;
         guardianDiv.querySelector(`#guardianEmail-${guardianCount}`).value = guardian.email;
+        guardianDiv.querySelector(`#guardianPostalCode-${guardianCount}`).value = guardian.postalCode; 
 
         document.getElementById('guardians-container').appendChild(guardianDiv);
     });
@@ -351,6 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Save Profile Changes
+// Save Profile Changes
 document.getElementById('saveProfileBtn').addEventListener('click', () => {
     const guardiansData = [];
     document.querySelectorAll('.guardian-container').forEach((guardian, index) => {
@@ -359,7 +366,7 @@ document.getElementById('saveProfileBtn').addEventListener('click', () => {
             lastName: document.getElementById(`guardianLastName-${index + 1}`).value,
             phone: document.getElementById(`guardianPhone-${index + 1}`).value,
             email: document.getElementById(`guardianEmail-${index + 1}`).value,
-            profileColor: JSON.parse(localStorage.getItem('guardians'))[index].profileColor, // Keep the color consistent
+            postalCode: document.getElementById(`guardianPostalCode-${index + 1}`).value, // Added Postal Code
         });
     });
 
@@ -380,6 +387,8 @@ document.getElementById('saveProfileBtn').addEventListener('click', () => {
     // Save guardians and children to localStorage
     localStorage.setItem('guardians', JSON.stringify(guardiansData));
     localStorage.setItem('children', JSON.stringify(childrenData));
-});
 
+    // Log the saved data for confirmation
+    console.log({ guardiansData, childrenData });
+});
 

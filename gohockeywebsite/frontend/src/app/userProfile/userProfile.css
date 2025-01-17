@@ -6,7 +6,7 @@ html, body {
 
 /* The main content container to push the footer down */
 .container {
-  min-height: calc(100vh - 100px); /* Subtract the footer's height */
+  min-height: calc(100vh - 100px); 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -16,8 +16,8 @@ html, body {
 /* Container for the profile card */
 .profile-container {
   width: 80%; /* Reduced width for smaller form */
-  max-width: 800px; /* Maximum width for the form */
-  min-width: 400px; /* Minimum width for better responsiveness */
+  max-width: 800px; 
+  min-width: 400px;
   margin: 3% auto; 
   padding: 20px; /* Reduced padding */
   border-radius: 10px; 
