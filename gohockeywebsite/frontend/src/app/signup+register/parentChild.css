@@ -15,7 +15,6 @@ body {
     margin-right: auto;
 }
 
-
 /* Form Section */
 .form-section {
     border: 1px solid #ccc;
@@ -24,6 +23,7 @@ body {
     margin-bottom: 12px; /* Reduced margin */
     background-color: #f9f9f9;
     font-size: 0.85rem; /* Smaller font size */
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.15);
 }
 
 .form-section h3 {
