@@ -79,7 +79,6 @@ function createChildHTML(childCount) {
 * TOGGLE EDIT MODE
 ********************************************************/
 function toggleEditable(editable) {
-    // Ensure username, email, postal code, guardian, and child fields are editable/locked
     document.querySelectorAll(`
         #profileFields input,
         .guardian-container input,
@@ -92,20 +91,20 @@ function toggleEditable(editable) {
         field.disabled = !editable;
     });
 
-    // Show/hide the Add Guardian / Add Child buttons
+    //Show/hide the Add Guardian / Add Child buttons
     document.getElementById('add-guardian-btn').style.display = editable ? 'block' : 'none';
     document.getElementById('add-child-btn').style.display = editable ? 'block' : 'none';
     document.getElementById('saveProfileBtn').style.display = editable ? 'block' : 'none';
     document.getElementById('editProfileBtn').style.display = editable ? 'none' : 'block';
     document.getElementById('editPhotoBtn').style.display = editable ? 'block' : 'none';
 
-    // Show/hide Remove Guardian/Child buttons
+    //Show/hide Remove Guardian/Child buttons
     document.querySelectorAll('.remove-btn').forEach((button) => {
         button.style.display = editable ? 'block' : 'none';
     });
 }
 
-// Event listeners for "Edit Profile" and "Save Changes"
+//Event listeners for "Edit Profile" and "Save Changes"
 document.getElementById('editProfileBtn').addEventListener('click', () => {
     toggleEditable(true);
 });
@@ -120,9 +119,9 @@ document.getElementById('saveProfileBtn').addEventListener('click', () => {
 const guardiansContainer = document.getElementById('guardians-container');
 const childrenContainer = document.getElementById('children-container');
 
-// ADD GUARDIAN DYNAMICALLY
+//ADD GUARDIAN DYNAMICALLY
 document.getElementById('add-guardian-btn').addEventListener('click', () => {
-    // Calculate the current guardian count dynamically based on the number of guardian containers
+    //Calculate the current guardian count dynamically based on the number of guardian containers
     const guardianCount = document.querySelectorAll('.guardian-container').length + 1;
 
     const guardianDiv = document.createElement('div');
@@ -131,13 +130,13 @@ document.getElementById('add-guardian-btn').addEventListener('click', () => {
     guardianDiv.innerHTML = createGuardianHTML(guardianCount);
     guardiansContainer.appendChild(guardianDiv);
 
-    // Make newly added guardian editable if in "edit mode"
+    //Make newly added guardian editable if in "edit mode"
     toggleEditable(true);
 });
 
-// ADD CHILD DYNAMICALLY
+//ADD CHILD DYNAMICALLY
 document.getElementById('add-child-btn').addEventListener('click', () => {
-    // Calculate the current child count dynamically based on the number of child containers
+    //Calculate the current child count dynamically based on the number of child containers
     const childCount = document.querySelectorAll('.child-container').length + 1;
 
     const childDiv = document.createElement('div');
@@ -146,32 +145,33 @@ document.getElementById('add-child-btn').addEventListener('click', () => {
     childDiv.innerHTML = createChildHTML(childCount);
     childrenContainer.appendChild(childDiv);
 
-    // Make newly added child editable if in "edit mode"
+    //Make newly added child editable if in "edit mode"
     toggleEditable(true);
 });
 
-// REMOVE ELEMENT (GUARDIAN OR CHILD) AND UPDATE COUNTS
+//REMOVE ELEMENT (GUARDIAN OR CHILD) AND UPDATE COUNTS
 function removeElement(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
         element.remove();
 
-        // After removing a guardian or child, recalculate and update counts based on the remaining elements
+        //After removing a guardian or child, recalculate and update counts based on the remaining elements
         updateGuardianCount();
         updateChildCount();
     }
 }
 
-// UPDATE GUARDIAN COUNT AFTER REMOVAL
+//UPDATE GUARDIAN COUNT AFTER REMOVAL
 function updateGuardianCount() {
     const guardians = document.querySelectorAll('.guardian-container');
     guardians.forEach((guardian, index) => {
-        const guardianNumber = index + 1; // Guardian numbers should start from 1 after a removal
+        //Guardian numbers should start from 1 after a removal
+        const guardianNumber = index + 1;
         const guardianHeader = guardian.querySelector('h5');
         if (guardianHeader) {
-            guardianHeader.textContent = `Guardian ${guardianNumber}`; // Update guardian label
+            guardianHeader.textContent = `Guardian ${guardianNumber}`;
         }
-        // Update guardian inputs to reflect correct IDs
+        //Update guardian inputs to reflect correct IDs
         const inputs = guardian.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
             const idParts = input.id.split('-');
@@ -181,16 +181,17 @@ function updateGuardianCount() {
     });
 }
 
-// UPDATE CHILD COUNT AFTER REMOVAL
+//UPDATE CHILD COUNT AFTER REMOVAL
 function updateChildCount() {
     const children = document.querySelectorAll('.child-container');
     children.forEach((child, index) => {
-        const childNumber = index + 1; // Child numbers should start from 1 after a removal
+        //Child numbers should start from 1 after a removal
+        const childNumber = index + 1;
         const childHeader = child.querySelector('h5');
         if (childHeader) {
-            childHeader.textContent = `Child ${childNumber}`; // Update child label
+            childHeader.textContent = `Child ${childNumber}`;
         }
-        // Update child inputs to reflect correct IDs
+        //Update child inputs to reflect correct IDs
         const inputs = child.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
             const idParts = input.id.split('-');
@@ -199,7 +200,6 @@ function updateChildCount() {
         });
     });
 }
-
 
 /********************************************************
 * REMOVE ELEMENT BY ID
@@ -210,8 +210,6 @@ function removeElement(elementId) {
         element.remove();
     }
 }
-
-
 
 /********************************************************
 * SAVE PROFILE
@@ -241,47 +239,42 @@ saveProfileBtn.addEventListener('click', () => {
 /********************************************************
 * GENERATE DEFAULT PROFILE PICTURE
 ********************************************************/
-function generateDefaultProfilePicture(name) {
-    const canvas = document.createElement('canvas');
-    canvas.width = 150;
-    canvas.height = 150;
-    const ctx = canvas.getContext('2d');
+// function generateDefaultProfilePicture(name) {
+//     const canvas = document.createElement('canvas');
+//     canvas.width = 150;
+//     canvas.height = 150;
+//     const ctx = canvas.getContext('2d');
 
-    // Choose a random background color
-    const colors = ['#5e00c7', '#ccc'];
-    const bgColor = colors[Math.floor(Math.random() * colors.length)];
+//     // Choose a random background color
+//     const colors = ['#5e00c7', '#ccc'];
+//     const bgColor = colors[Math.floor(Math.random() * colors.length)];
 
-    // Draw background
-    ctx.fillStyle = bgColor;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+//     // Draw background
+//     ctx.fillStyle = bgColor;
+//     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw the first letter
-    ctx.fillStyle = '#fff'; // White text
-    ctx.font = 'bold 70px Arial';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    const initial = name.charAt(0).toUpperCase();
-    ctx.fillText(initial, canvas.width / 2, canvas.height / 2);
+//     // Draw the first letter
+//     ctx.fillStyle = '#fff'; // White text
+//     ctx.font = 'bold 70px Arial';
+//     ctx.textAlign = 'center';
+//     ctx.textBaseline = 'middle';
+//     const initial = name.charAt(0).toUpperCase();
+//     ctx.fillText(initial, canvas.width / 2, canvas.height / 2);
 
-    return canvas.toDataURL('image/png');
-}
+//     return canvas.toDataURL('image/png');
+// }
 
 /********************************************************
 * PROFILE PICTURE EDIT
 ********************************************************/
+// Handle profile image upload
 const editPhotoBtn = document.getElementById('editPhotoBtn');
 const photoInput = document.getElementById('photoInput');
 const profileImage = document.getElementById('profileImage');
 
-// On error, generate a default image with the guardian's name
-profileImage.onerror = () => {
-    const guardianFirstName = document.querySelector('[id^="guardianFirstName"]').value || 'G';
-    profileImage.src = generateDefaultProfilePicture(guardianFirstName);
-};
-
-// Event listener for uploading custom profile picture
+// Upload profile photo
 editPhotoBtn.addEventListener('click', () => {
-    photoInput.click();
+    photoInput.click();  // Trigger file input click
 });
 
 photoInput.addEventListener('change', (event) => {
@@ -289,39 +282,47 @@ photoInput.addEventListener('change', (event) => {
     if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
-            profileImage.src = e.target.result;
+            const imgDataUrl = e.target.result; 
+            profileImage.src = imgDataUrl;
+            localStorage.setItem('profileImage', imgDataUrl);
         };
         reader.readAsDataURL(file);
     }
 });
 
-// Set default profile picture if no image is uploaded
+//reload
 document.addEventListener('DOMContentLoaded', () => {
-    const guardianFirstName = document.querySelector('[id^="guardianFirstName"]').value || 'G';
-    profileImage.src = generateDefaultProfilePicture(guardianFirstName);
+    const storedImage = localStorage.getItem('profileImage');
+    if (storedImage) {
+        profileImage.src = storedImage;
+    } else {
+        //default image
+        profileImage.src = '../assets/images/GOHockey_Logo_Vector_IconOnly.svg'; 
+    }
 });
+
 
 /********************************************************
 * LOAD DATA AND UPDATE PROFILE FROM GUARDIAN/CHILD
 ********************************************************/
 document.addEventListener('DOMContentLoaded', () => {
-    // Retrieve data from localStorage
+    //Retrieve data from localStorage
     const guardiansData = JSON.parse(localStorage.getItem('guardians')) || [];
     const childrenData = JSON.parse(localStorage.getItem('children')) || [];
 
-    // Populate username and email fields
+    //Populate username and email fields
     document.getElementById('username').value = localStorage.getItem('username') || "";
     document.getElementById('email').value = localStorage.getItem('email') || "";
 
-    // Populate guardians section using createGuardianHTML
+    //Populate guardians section using createGuardianHTML
     guardiansData.forEach((guardian, index) => {
-        guardianCount++; // Increment global count
+        guardianCount++;
         const guardianDiv = document.createElement('div');
         guardianDiv.classList.add('guardian-container');
         guardianDiv.id = `guardian-${guardianCount}`;
         guardianDiv.innerHTML = createGuardianHTML(guardianCount);
 
-        // Populate guardian fields
+        //Populate guardian fields
         guardianDiv.querySelector(`#guardianFirstName-${guardianCount}`).value = guardian.firstName;
         guardianDiv.querySelector(`#guardianLastName-${guardianCount}`).value = guardian.lastName;
         guardianDiv.querySelector(`#guardianPhone-${guardianCount}`).value = guardian.phone;
@@ -331,15 +332,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('guardians-container').appendChild(guardianDiv);
     });
 
-    // Populate children section using createChildHTML
+    //Populate children section using createChildHTML
     childrenData.forEach((child, index) => {
-        childCount++; // Increment global count
+        childCount++; 
         const childDiv = document.createElement('div');
         childDiv.classList.add('child-container');
         childDiv.id = `child-${childCount}`;
         childDiv.innerHTML = createChildHTML(childCount);
 
-        // Populate child fields
+        //Populate child fields
         childDiv.querySelector(`#childFirstName-${childCount}`).value = child.firstName;
         childDiv.querySelector(`#childLastName-${childCount}`).value = child.lastName;
         childDiv.querySelector(`#birthYear-${childCount}`).value = child.birthYear;
@@ -351,13 +352,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('children-container').appendChild(childDiv);
     });
 
-    // Set profile to non-editable initially
+    //Set profile to non-editable initially
     toggleEditable(false);
 });
 
 
-// Save Profile Changes
-// Save Profile Changes
+//Save Profile Changes
 document.getElementById('saveProfileBtn').addEventListener('click', () => {
     const guardiansData = [];
     document.querySelectorAll('.guardian-container').forEach((guardian, index) => {
@@ -366,7 +366,7 @@ document.getElementById('saveProfileBtn').addEventListener('click', () => {
             lastName: document.getElementById(`guardianLastName-${index + 1}`).value,
             phone: document.getElementById(`guardianPhone-${index + 1}`).value,
             email: document.getElementById(`guardianEmail-${index + 1}`).value,
-            postalCode: document.getElementById(`guardianPostalCode-${index + 1}`).value, // Added Postal Code
+            postalCode: document.getElementById(`guardianPostalCode-${index + 1}`).value,
         });
     });
 
@@ -378,17 +378,17 @@ document.getElementById('saveProfileBtn').addEventListener('click', () => {
         });
     });
 
-    // Save username and email to localStorage
+    //Save username and email to localStorage
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
     localStorage.setItem('username', username);
     localStorage.setItem('email', email);
 
-    // Save guardians and children to localStorage
+    //Save guardians and children to localStorage
     localStorage.setItem('guardians', JSON.stringify(guardiansData));
     localStorage.setItem('children', JSON.stringify(childrenData));
 
     // Log the saved data for confirmation
-    console.log({ guardiansData, childrenData });
+    // console.log({ guardiansData, childrenData });
 });
 
