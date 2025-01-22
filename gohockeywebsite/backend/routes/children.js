@@ -7,9 +7,9 @@ const {
   deleteChildProfile,
 } = require('../controllers/childController');
 
-router.post('/children', addChildProfile); // Add a child profile
-router.get('/children/:parentId', getChildrenByParent); // Get all children for a parent
-router.put('/children/:childId', updateChildProfile); // Update a child profile
-router.delete('/children/:childId', deleteChildProfile); // Delete a child profile
+router.post('/children', addChildProfile);
+router.get('/children/:parentId', getChildrenByParent); 
+router.put('/children/:childId', updateChildProfile); 
+router.delete('/children/:childId', deleteChildProfile); 
 
 module.exports = router;
