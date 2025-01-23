@@ -2,29 +2,23 @@ const db = require('../config/db');
 
 const User = {
   create: (userData) => {
-    const query = `INSERT INTO users (first_name, last_name, email, password, phone, postal_code) VALUES (?, ?, ?, ?, ?, ?)`;
+    const query = `INSERT INTO users (username, email, password) VALUES (?, ?, ?)`;
     return db.promise().query(query, [
-      userData.firstName,
-      userData.lastName,
+      userData.username,
       userData.email,
       userData.password,
-      userData.phone,
-      userData.postalCode,
     ]);
   },
 
   findByEmail: (email) => {
     const query = `SELECT * FROM users WHERE email = ?`;
-    return db.promise().query(query, [email]);
+    return db.promise().query(query, [email]).then(([rows]) => rows); // Ensure only rows are returned
   },
 
-  findByUsername: (firstName, lastName) => {
-    const query = `SELECT * FROM users WHERE first_name = ? AND last_name = ?`;
-    return db.promise().query(query, [firstName, lastName]);
+  findByUsername: (username) => {
+    const query = `SELECT * FROM users WHERE username = ?`;
+    return db.promise().query(query, [username]).then(([rows]) => rows); // Ensure only rows are returned
   },
-  
 };
-
-
 
 module.exports = User;
