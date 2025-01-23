@@ -1,5 +1,4 @@
 const express = require('express');
-const router = express.Router();
 const { authenticateUser } = require('../middleware/auth');
 const {
   createGuardianProfile,
@@ -7,9 +6,11 @@ const {
   updateGuardianProfile,
 } = require('../controllers/guardianController');
 
-// Routes for guardians
+const router = express.Router();
+
+// CRUD routes for guardians
 router.post('/guardians', authenticateUser, createGuardianProfile); // Create a guardian profile
-router.get('/guardians', authenticateUser, getGuardianProfile); // Get the guardian profile for the authenticated user
-router.put('/guardians', authenticateUser, updateGuardianProfile); // Update the guardian profile
+router.get('/guardians', authenticateUser, getGuardianProfile); // Get guardian profile
+router.put('/guardians', authenticateUser, updateGuardianProfile); // Update guardian profile
 
 module.exports = router;

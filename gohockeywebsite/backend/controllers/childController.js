@@ -5,8 +5,9 @@ const addChildProfile = async (req, res) => {
   const { firstName, lastName, birthYear, divisionLevel, hockeyOrganization, position, medicalConditions } = req.body;
   const userId = req.user.id; // Retrieve `userId` from authenticated user (requires middleware)
 
-  if (!firstName || !lastName || !birthYear) {
-    return res.status(400).json({ message: 'First name, last name, and birth year are required' });
+  // Validate that all fields are provided
+  if (!firstName || !lastName || !birthYear || !divisionLevel || !hockeyOrganization || !position || !medicalConditions) {
+    return res.status(400).json({ message: 'All fields are required' });
   }
 
   try {
@@ -46,6 +47,11 @@ const updateChildProfile = async (req, res) => {
   const { childId } = req.params;
   const { firstName, lastName, birthYear, divisionLevel, hockeyOrganization, position, medicalConditions } = req.body;
   const userId = req.user.id; // Retrieve `userId` from authenticated user (requires middleware)
+
+  // Validate that all fields are provided
+  if (!firstName || !lastName || !birthYear || !divisionLevel || !hockeyOrganization || !position || !medicalConditions) {
+    return res.status(400).json({ message: 'All fields are required' });
+  }
 
   try {
     await Child.update(childId, {

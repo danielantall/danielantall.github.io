@@ -2,11 +2,12 @@ const Guardian = require('../models/Guardian');
 
 // Create a guardian profile
 const createGuardianProfile = async (req, res) => {
-  const { firstName, lastName, phoneNumber, postalCode } = req.body;
+  const { firstName, lastName, phoneNumber, email, postalCode } = req.body;
   const userId = req.user.id; // Get the userId from the token (via authenticateUser middleware)
 
-  if (!firstName || !lastName) {
-    return res.status(400).json({ message: 'First name and last name are required' });
+  // Ensure all fields are provided
+  if (!firstName || !lastName || !phoneNumber || !email || !postalCode) {
+    return res.status(400).json({ message: 'All fields are required' });
   }
 
   try {
@@ -15,6 +16,7 @@ const createGuardianProfile = async (req, res) => {
       firstName,
       lastName,
       phoneNumber,
+      email,
       postalCode,
     });
 
@@ -46,10 +48,11 @@ const getGuardianProfile = async (req, res) => {
 // Update a guardian profile
 const updateGuardianProfile = async (req, res) => {
   const userId = req.user.id; // Get the userId from the token (via authenticateUser middleware)
-  const { firstName, lastName, phoneNumber, postalCode } = req.body;
+  const { firstName, lastName, phoneNumber, email, postalCode } = req.body;
 
-  if (!firstName || !lastName) {
-    return res.status(400).json({ message: 'First name and last name are required' });
+  // Ensure all fields are provided
+  if (!firstName || !lastName || !phoneNumber || !email || !postalCode) {
+    return res.status(400).json({ message: 'All fields are required' });
   }
 
   try {
@@ -57,6 +60,7 @@ const updateGuardianProfile = async (req, res) => {
       firstName,
       lastName,
       phoneNumber,
+      email,
       postalCode,
     });
 
