@@ -17,6 +17,14 @@ const User = {
     const query = `SELECT * FROM users WHERE email = ?`;
     return db.promise().query(query, [email]);
   },
+
+  findByUsername: (firstName, lastName) => {
+    const query = `SELECT * FROM users WHERE first_name = ? AND last_name = ?`;
+    return db.promise().query(query, [firstName, lastName]);
+  },
+  
 };
+
+
 
 module.exports = User;

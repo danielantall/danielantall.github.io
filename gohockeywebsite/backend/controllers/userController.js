@@ -5,16 +5,38 @@ const SECRET_KEY = 'your_secret_key'; // Use an environment variable in producti
 
 // Register a new user
 const registerUser = async (req, res) => {
-  const { firstName, lastName, email, password, phone, postalCode } = req.body;
+  const { firstName, lastName, email, password, confirmPassword, phone, postalCode } = req.body;
 
   // Validate input
-  if (!firstName || !lastName || !email || !password || !phone || !postalCode) {
+  if (!firstName || !lastName || !email || !password || !confirmPassword || !phone || !postalCode) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
+  // Check if passwords match
+  if (password !== confirmPassword) {
+    return res.status(400).json({ message: 'Passwords do not match' });
+  }
+
   try {
+    console.log('Incoming request body:', req.body);
+
+    // Check if email already exists
+    const [existingUsers] = await User.findByEmail(email);
+    console.log('Existing users by email:', existingUsers);
+    if (existingUsers.length > 0) {
+      return res.status(400).json({ message: 'Email already exists' });
+    }
+
+    // Check if username (firstName + lastName) already exists
+    const [existingUsersByUsername] = await User.findByUsername(firstName, lastName);
+    console.log('Existing users by username:', existingUsersByUsername);
+    if (existingUsersByUsername.length > 0) {
+      return res.status(400).json({ message: 'Username already exists' });
+    }
+
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
+    console.log('Hashed password:', hashedPassword);
 
     // Save user to the database
     const newUser = await User.create({
@@ -25,19 +47,22 @@ const registerUser = async (req, res) => {
       phone,
       postalCode,
     });
+    console.log('New user created:', newUser);
 
     res.status(201).json({ message: 'User registered successfully', userId: newUser.insertId });
   } catch (err) {
-    console.error(err);
+    console.error('Error during user registration:', err);
 
-    // Handle duplicate email error (if email is set as unique in the database)
+    // Handle duplicate email error
     if (err.code === 'ER_DUP_ENTRY') {
-      return res.status(400).json({ message: 'Email already exists' });
+      return res.status(400).json({ message: 'Email or username already exists' });
     }
 
     res.status(500).json({ message: 'Error registering user' });
   }
 };
+
+
 
 // Log in an existing user
 const loginUser = async (req, res) => {
