@@ -89,6 +89,9 @@ function toggleEditable(editable) {
 
     // Show/hide Add Child button and Remove buttons for children
     document.getElementById('add-child-btn').style.display = editable ? 'block' : 'none';
+    document.getElementById('saveProfileBtn').style.display = editable ? 'block' : 'none';
+    document.getElementById('editProfileBtn').style.display = editable ? 'none' : 'block';
+    document.getElementById('editPhotoBtn').style.display = editable ? 'block' : 'none';
     document.querySelectorAll('.child-container .remove-btn').forEach((button) => {
         button.style.display = editable ? 'block' : 'none';
     });
