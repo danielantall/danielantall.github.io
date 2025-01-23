@@ -1,4 +1,4 @@
-const db = require('../config/db'); // Import database connection from db.js file
+const db = require('../config/db'); 
 
 const User = {
   create: (userData) => {
