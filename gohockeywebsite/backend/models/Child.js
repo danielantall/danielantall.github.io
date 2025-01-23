@@ -1,50 +1,51 @@
 const db = require('../config/db');
 
 const Child = {
-  create: (childData, callback) => {
-    const query = `INSERT INTO children (parent_id, name, birth_year, division, level, email, organization, position, medical_conditions) 
-                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-    db.query(query, [
-      childData.parentId,
-      childData.name,
+  create: (childData) => {
+    const query = `
+      INSERT INTO children (userId, firstName, lastName, birthYear, divisionLevel, hockeyOrganization, position, medicalConditions) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    return db.promise().query(query, [
+      childData.userId,
+      childData.firstName,
+      childData.lastName,
       childData.birthYear,
-      childData.division,
-      childData.level,
-      childData.email,
-      childData.organization,
+      childData.divisionLevel,
+      childData.hockeyOrganization,
       childData.position,
       childData.medicalConditions
-    ], callback);
+    ]);
   },
 
-  findByParentId: (parentId, callback) => {
-    const query = `SELECT * FROM children WHERE parent_id = ?`;
-    db.query(query, [parentId], callback);
+  findByUserId: (userId) => {
+    const query = `SELECT * FROM children WHERE userId = ?`;
+    return db.promise().query(query, [userId]).then(([rows]) => rows); // Return rows only
   },
 
-  update: (childId, childData, callback) => {
-    const query = `UPDATE children SET name = ?, birth_year = ?, division = ?, level = ?, email = ?, organization = ?, position = ?, medical_conditions = ? 
-                   WHERE id = ? AND parent_id = ?`;
-    db.query(query, [
-      childData.name,
+  update: (childId, childData) => {
+    const query = `
+      UPDATE children 
+      SET firstName = ?, lastName = ?, birthYear = ?, divisionLevel = ?, hockeyOrganization = ?, position = ?, medicalConditions = ?
+      WHERE childId = ? AND userId = ?
+    `;
+    return db.promise().query(query, [
+      childData.firstName,
+      childData.lastName,
       childData.birthYear,
-      childData.division,
-      childData.level,
-      childData.email,
-      childData.organization,
+      childData.divisionLevel,
+      childData.hockeyOrganization,
       childData.position,
       childData.medicalConditions,
       childId,
-      childData.parentId
-    ], callback);
+      childData.userId
+    ]);
   },
 
-  delete: (childId, parentId, callback) => {
-    const query = `DELETE FROM children WHERE id = ? AND parent_id = ?`;
-    db.query(query, [childId, parentId], callback);
+  delete: (childId, userId) => {
+    const query = `DELETE FROM children WHERE childId = ? AND userId = ?`;
+    return db.promise().query(query, [childId, userId]);
   }
 };
 
 module.exports = Child;
-
-

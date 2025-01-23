@@ -1,15 +1,18 @@
 const express = require('express');
-const router = express.Router();
+const { authenticateUser } = require('../middleware/auth'); // Ensure this path is correct
 const {
   addChildProfile,
-  getChildrenByParent,
+  getChildrenByUserId,
   updateChildProfile,
   deleteChildProfile,
 } = require('../controllers/childController');
 
-router.post('/children', addChildProfile);
-router.get('/children/:parentId', getChildrenByParent); 
-router.put('/children/:childId', updateChildProfile); 
-router.delete('/children/:childId', deleteChildProfile); 
+const router = express.Router();
+
+router.post('/children', authenticateUser, addChildProfile); // Add a child profile
+router.get('/children', authenticateUser, getChildrenByUserId); // Get all children for the authenticated user
+router.put('/children/:childId', authenticateUser, updateChildProfile); // Update a child profile
+router.delete('/children/:childId', authenticateUser, deleteChildProfile); // Delete a child profile
 
 module.exports = router;
+
