@@ -52,7 +52,7 @@ CREATE TABLE payments (
   userId INT NOT NULL,
   programId INT NOT NULL,
   paymentAmount DECIMAL(10, 2) NOT NULL,
-  paymentStatus ENUM('Pending', 'Completed', 'Unpaid') DEFAULT 'Pending',
+  paymentStatus ENUM('Pending', 'Completed', 'Unpaid', `Not Signed Up`) DEFAULT `Not Signed Up`,
   paymentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (userId) REFERENCES users(userId),
   FOREIGN KEY (programId) REFERENCES programs(programId)
