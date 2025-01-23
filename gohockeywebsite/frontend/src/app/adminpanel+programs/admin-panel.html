@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GO Hockey - Admin</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.bootstrap5.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./admin.css">
+    <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
+    <script defer src="https://cdn.datatables.net/2.2.1/js/dataTables.bootstrap5.js"></script>
+    <script defer src="load.js"></script>
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
         <div class="container-fluid">
             <!-- Logo -->
-            
+
             <img src="../assets/images/GOHockey_Logo_Vector_IconOnly.svg" alt="Logo" class="footer-logo">
-                    
-            
+
+
             <!-- Navbar Toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Collapsible Navbar Content -->
@@ -61,129 +73,61 @@
         </div>
     </nav>
 
-    
-    
 
-      <div class="container-s">
-            <h2 style="margin: 20px 120px">Dashboard</h2>
-      </div>
-      <div class="container mt-4">
-        <div class="row">
-            <div class="col offset-md-10">
-                <div class="search-wrapper">
-                    <label for="search"></label>
-                    <input type="search" id="search" placeholder="Search Here" program-search>
-                </div>
-            </div>
-        </div>
-      </div>
-      
-      
-      <div class="vstack gap-1" id="programContainer">
-        <div class="container mt-4">
+
+
+    <div class="container-s">
+        <h2 style="margin-right: auto;margin-left: 2.5em; margin-top: 120px;">Dashboard</h2>
+    </div>
+
+
+
+
+
+    <div class="vstack gap-1">
+        <div class="container mt-4 grid-title">
             <!-- Table Header Section -->
-            <div class="table-header">
-                <div class="table-column">Parent Name</div>
-                <div class="table-column">Last Name</div>
-                <div class="table-column">Program Name</div>
-                <div class="table-column">Payment Status</div>
-                <div class="table-column">&nbsp;</div>
-            </div>
-          </div>
-        <div class="accordion" id="programAccordion">
-            <!-- Accordion Row Example 1 -->
-            <div class="accordion-item">
-                <div class="table-row">
-                    <div class="accordion-column" id="firstName">Joe</div>
-                    <div class="accordion-column" id="lastName">Doe</div>
-                    <div class="accordion-column" id="program">17U Hockey Snipe</div>
-                    <div class="accordion-column">
-                        <button type="button" class="btn btn-warning" id="status">Pending</button>
-                    </div>
-                    <div class="table-column">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRow1" aria-expanded="false" aria-controls="collapseRow1">
-                        </button>
-                    </div>
-                </div>
-                <div id="collapseRow1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <p><strong>Parent Details:</strong></p>
-                        <p class="child-card">Payment Email:</p>
-                        <p id="email">placeholder@gmail.com</p>
-                        <p class="child-card">Phone:</p>
-                        <p id="phone">647 ...</p>
-                        <p><strong>Child Details:</strong></p>
-                        <p class="child-card">First Name:</p>
-                        <p id="childFirstName">Joe</p>
-                        <p class="child-card">Last Name:</p>
-                        <p id="chilLastName">Doe</p>
-                        <p class="child-card">Birth Year:</p>
-                        <p id="birthYear">2010</p>
-                        <p class="child-card">Division:</p>
-                        <p id="division">17U</p>
-                        <p class="child-card">Hockey Organization:</p>
-                        <p id="hockeyOrg"></p>
-                        <p class="child-card">Position:</p>
-                        <p id="position"></p>
-                        <p class="child-card">Medical Concerns:</p>
-                        <p id="medicalConcerns"></p>
-
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Additional Accordion Rows can be added in a similar way -->
+            <table id="example" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Program</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Postal Code</th>
+                        <th>Payment Status</th>
+                    </tr>
+                </thead>
+                <tbody id="programContainer">
+                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Program</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Postal Code</th>
+                        <th>Payment Status</th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-      </div>
+
+    </div>
     <template program-template>
-        <div class="accordion" id="programAccordion">
-            <!-- Accordion Row Example 1 -->
-            <div class="accordion-item">
-                <div class="table-row">
-                    <div class="accordion-column" id="firstName"></div>
-                    <div class="accordion-column" id="lastName"></div>
-                    <div class="accordion-column" id="program"></div>
-                    <div class="accordion-column">
-                        <button type="button" class="btn btn-warning" id="status">Pending</button>
-                    </div>
-                    <div class="table-column">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRow1" aria-expanded="false" aria-controls="collapseRow1">
-                        </button>
-                    </div>
-                </div>
-                <div id="collapseRow1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <p><strong>Parent Details:</strong></p>
-                        <p class="child-card">Payment Email:</p>
-                        <p id="email"></p>
-                        <p class="child-card">Phone:</p>
-                        <p id="phone"></p>
-                        <p><strong>Child Details:</strong></p>
-                        <p class="child-card">First Name:</p>
-                        <p id="childFirstName"></p>
-                        <p class="child-card">Last Name:</p>
-                        <p id="chilLastName"></p>
-                        <p class="child-card">Birth Year:</p>
-                        <p id="birthYear"></p>
-                        <p class="child-card">Division:</p>
-                        <p id="division"></p>
-                        <p class="child-card">Hockey Organization:</p>
-                        <p id="hockeyOrg"></p>
-                        <p class="child-card">Position:</p>
-                        <p id="position"></p>
-                        <p class="child-card">Medical Concerns:</p>
-                        <p id="medicalConcerns"></p>
-
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Additional Accordion Rows can be added in a similar way -->
-        </div>
+        <tr>
+            <td id="name"></td>
+            <td id="program"></td>
+            <td id="email"></td>
+            <td id="phone"></td>
+            <td id="postal"></td>
+            <td id="payment"></td>
+        </tr>
     </template>
-    
-      
-      
+
+
+
     <!-- Footer -->
     <footer class="custom-footer">
         <div class="custom-container">
@@ -192,7 +136,7 @@
                 <div class="footer-logo-section">
                     <img src="../assets/images/GOHockey_Logo_Vector_IconOnly.svg" alt="Logo" class="footer-logo">
                 </div>
-    
+
                 <!-- Social Media Section -->
                 <div class="footer-social-section">
                     <a href="#" class="social-icon">
@@ -202,7 +146,7 @@
                         <i class="fab fa-facebook"></i>
                     </a>
                 </div>
-    
+
                 <!-- About Us -->
                 <div class="footer-column">
                     <h5>About Us</h5>
@@ -211,7 +155,7 @@
                         <li><a href="#">Sponsors and Partners</a></li>
                     </ul>
                 </div>
-    
+
                 <!-- Our Programs -->
                 <div class="footer-column">
                     <h5>Our Programs</h5>
@@ -220,7 +164,7 @@
                         <li><a href="#">Sign Up Now</a></li>
                     </ul>
                 </div>
-    
+
                 <!-- Merchandise -->
                 <div class="footer-column">
                     <h5>Merchandise</h5>
@@ -229,7 +173,7 @@
                         <li><a href="#">Purchase a Product</a></li>
                     </ul>
                 </div>
-    
+
                 <!-- Testimonials -->
                 <div class="footer-column">
                     <h5>Testimonials</h5>
@@ -237,7 +181,7 @@
                         <li><a href="#">Learn More</a></li>
                     </ul>
                 </div>
-    
+
                 <!-- Contact Us / FAQs -->
                 <div class="footer-column">
                     <h5>Contact Us / FAQs</h5>
@@ -246,9 +190,10 @@
         </div>
     </footer>
     <script src="program-api.js" defer></script>
-    <script src= "button.js"></script>
+    <script src="button.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js"></script>
     <script src="./mainpage.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

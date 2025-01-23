@@ -8,11 +8,6 @@
                 "last_name": "Doe",
                 "phone": "123-456-7890",
                 "payment_email": "john.doe@example.com"
-            },
-            {
-                "first_name": "Jane",
-                "last_name": "Doe",
-                "phone": "987-654-3210"
             }
         ],
         "children": [
@@ -36,11 +31,6 @@
                 "last_name": "Smith",
                 "phone": "222-333-4444",
                 "payment_email": "michael.smith@example.com"
-            },
-            {
-                "first_name": "Laura",
-                "last_name": "Smith",
-                "phone": "555-666-7777"
             }
         ],
         "children": [
@@ -64,11 +54,6 @@
                 "last_name": "Johnson",
                 "phone": "444-555-6666",
                 "payment_email": "david.johnson@example.com"
-            },
-            {
-                "first_name": "Susan",
-                "last_name": "Johnson",
-                "phone": "888-999-0000"
             }
         ],
         "children": [
