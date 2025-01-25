@@ -3,6 +3,7 @@ const cors = require('cors');
 const childRoutes = require('./routes/children');
 const userRoutes = require('./routes/users');
 const guardianRoutes = require('./routes/guardian');
+const authRoutes = require('./routes/auth');
 const db = require('./config/db');
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use('/users', userRoutes);
 app.use('/api', childRoutes);
 app.use('/api', guardianRoutes);
+app.use('/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.send('Backend is working');

@@ -69,14 +69,12 @@ const loginUser = async (req, res) => {
   }
 
   try {
-    const users = await User.findByEmail(email); // Returns rows from `findByEmail`
-    console.log('Existing users by email:', users);
+    const user = await User.findByEmail(email); // Returns the user object or null
+    console.log('Existing user by email:', user);
 
-    if (!users || users.length === 0) {
+    if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-
-    const user = users[0];
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
@@ -91,6 +89,7 @@ const loginUser = async (req, res) => {
     res.status(500).json({ message: 'Error logging in' });
   }
 };
+
 
 
 module.exports = { registerUser, loginUser };
