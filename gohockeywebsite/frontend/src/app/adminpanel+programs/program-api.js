@@ -1,41 +1,53 @@
-const programTemplate = document.querySelector("[program-template]");
-const programContainer = document.getElementById("programContainer");
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("http://127.0.0.1:8080/gohockeywebsite/frontend/src/app/adminpanel+programs/mockdata.json").then(res => res.json()).then(data => {
-        user = data.map(firstData => {
-            console.log(firstData);
-            const programRow = programTemplate.content.cloneNode(true).children[0];
-            
-            const firstName = programRow.querySelector("#firstName");
-            const lastName = programRow.querySelector("#lastName");
-            const program = programRow.querySelector("#program");
-            const phone = programRow.querySelector("#phone");
-            const email = programRow.querySelector("#email");
-            const postal = program.querySelector('#postal')
+    const apiUrl = "http://127.0.0.1:5500/gohockeywebsite/frontend/src/app/adminpanel+programs/mockdata.json";
 
-            firstName.textContent = firstData.parents[0].first_name;
-            lastName.textContent = firstData.parents[0].last_name;
-            program.textContent = firstData.program;
-            phone.textContent = firstData.parents[0].phone;
-            email.textContent = firstData.parents[0].payment_email;
-            postal.textContent = firstData.parents[0].postal;
-            programContainer.innerHTML += programRow;
-            return {
-                firstName: firstData.parents[0].first_name,
-                lastName: firstData.parents[0].last_name,
-                program: firstData.program,
-                phone: firstData.parents[0].phone,
-                email: firstData.parents[0].payment_email,
-                
-                element: programRow // Assuming `card` is an existing DOM element or object
-            };
+    fetch(apiUrl)
+        .then((res) => res.json())
+        .then((data) => {
+            // Transform data into rows for DataTable
+            const tableData = data.map((item) => {
+                const parent = item.parents[0]; // Assuming a single parent per entry
+                return [
+                    `${parent.first_name} ${parent.last_name}`, // Name
+                    item.program, // Program
+                    parent.payment_email, // Email
+                    parent.phone, // Phone Number
+                    parent.postal, // Postal Code
+                    getPaymentStatusButton(item.paymentStatus) // Payment Status as a button
+                ];
+            });
+
+            // Initialize DataTable on the table element
+            $("#example").DataTable({
+                data: tableData, // Pass transformed data
+                columns: [
+                    { title: "Name" },
+                    { title: "Program" },
+                    { title: "Email" },
+                    { title: "Phone Number" },
+                    { title: "Postal Code" },
+                    {
+                        title: "Payment Status",
+                        className: "text-center", // Center-align the buttons
+                    }
+                ],
+              
+            });
         });
-    });
+});
 
-})
+// Helper function for payment status as Bootstrap buttons
+function getPaymentStatusButton(status) {
+    switch (status) {
+        case 0:
+            return '<button class="btn btn-secondary btn-sm">Not Signed Up</button>';
+        case 1:
+            return '<button class="btn btn-warning btn-sm">Pending</button>';
+        case 2:
+            return '<button class="btn btn-danger btn-sm">Unpaid</button>';
+        case 3:
+            return '<button class="btn btn-success btn-sm">Completed</button>';
+        default:
+            return '<button class="btn btn-dark btn-sm">Unknown</button>';
+    }
+}

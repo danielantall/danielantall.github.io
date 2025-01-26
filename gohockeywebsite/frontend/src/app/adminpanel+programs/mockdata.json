@@ -2,12 +2,14 @@
     {
         "id": 1,
         "program": "Math Tutoring",
+        "paymentStatus": 0,
         "parents": [ 
             {
                 "first_name": "John",
                 "last_name": "Doe",
                 "phone": "123-456-7890",
-                "payment_email": "john.doe@example.com"
+                "payment_email": "john.doe@example.com",
+                "postal": "L4E 4J6"
             }
         ],
         "children": [
@@ -25,12 +27,14 @@
     {
         "id": 2,
         "program": "Science Camp",
+        "paymentStatus": 1,
         "parents": [
             {
                 "first_name": "Michael",
                 "last_name": "Smith",
                 "phone": "222-333-4444",
-                "payment_email": "michael.smith@example.com"
+                "payment_email": "michael.smith@example.com",
+                "postal": "L4E 4J6"
             }
         ],
         "children": [
@@ -48,12 +52,14 @@
     {
         "id": 3,
         "program": "Hockey Training",
+        "paymentStatus": 2,
         "parents": [
             {
                 "first_name": "David",
                 "last_name": "Johnson",
                 "phone": "444-555-6666",
-                "payment_email": "david.johnson@example.com"
+                "payment_email": "david.johnson@example.com",
+                "postal": "L4E 4J6"
             }
         ],
         "children": [
