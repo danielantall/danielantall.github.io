@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "program": "Math Tutoring",
+        "paymentStatus": 0,
+        "parents": [ 
+            {
+                "first_name": "John",
+                "last_name": "Doe",
+                "phone": "123-456-7890",
+                "payment_email": "john.doe@example.com",
+                "postal": "L4E 4J6"
+            }
+        ],
+        "children": [
+            {
+                "first_name": "Emily",
+                "last_name": "Doe",
+                "birth_year": 2012,
+                "division_level": "Peewee",
+                "hockey_org": "City Youth Hockey Club",
+                "position": "Forward",
+                "medical_concerns": "None"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "program": "Science Camp",
+        "paymentStatus": 1,
+        "parents": [
+            {
+                "first_name": "Michael",
+                "last_name": "Smith",
+                "phone": "222-333-4444",
+                "payment_email": "michael.smith@example.com",
+                "postal": "L4E 4J6"
+            }
+        ],
+        "children": [
+            {
+                "first_name": "Oliver",
+                "last_name": "Smith",
+                "birth_year": 2014,
+                "division_level": "Atom",
+                "hockey_org": "North Stars Hockey League",
+                "position": "Defense",
+                "medical_concerns": "Asthma"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "program": "Hockey Training",
+        "paymentStatus": 2,
+        "parents": [
+            {
+                "first_name": "David",
+                "last_name": "Johnson",
+                "phone": "444-555-6666",
+                "payment_email": "david.johnson@example.com",
+                "postal": "L4E 4J6"
+            }
+        ],
+        "children": [
+            {
+                "first_name": "Lucas",
+                "last_name": "Johnson",
+                "birth_year": 2013,
+                "division_level": "Bantam",
+                "hockey_org": "Eastside Hockey Association",
+                "position": "Goalie",
+                "medical_concerns": "Peanut Allergy"
+            }
+        ]
+    }
+]

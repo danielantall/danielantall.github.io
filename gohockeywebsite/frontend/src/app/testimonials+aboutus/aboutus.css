@@ -1,0 +1,274 @@
+h1{
+    font-size:  75px;
+    font-weight: 800;
+    color: #5e00c7;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color:#ffffff;
+}
+header, footer {
+    background-color: #f0f0f0;
+    padding: 1em;
+    text-align: center;
+}
+
+.custom-navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 1em 2em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo */
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.topleftlogo {
+    max-width: 1vw;
+    width: auto;
+    height: auto;
+}
+
+/* Navbar Links with Synchronized Animation */
+.nav-links .nav-item .nav-link {
+    display: inline-block;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden; /* Clip the underline effect */
+    transition: color 0.3s ease-in-out; /* Smooth text color transition */
+}
+
+.nav-links .nav-item .nav-link:hover {
+    color: #5e00c7; /* Change text color on hover */
+}
+
+.nav-links .nav-item .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%; /* Start underline from the center */
+    bottom: 0; /* Position at the bottom of the text */
+    width: 0; /* Initially no width */
+    height: 2px; /* Thickness of the underline */
+    background-color: #5e00c7; /* Your theme color */
+    transition: width 0.4s ease, transform 0.4s ease; /* Smooth width and transform animation */
+    transform: translateX(-50%); /* Center align starting point */
+}
+
+.nav-links .nav-item .nav-link:hover::after {
+    width: 100%; /* Expand underline to the full width of the word */
+    transform: translateX(-50%); /* Keep it centered while growing */
+}
+
+.nav-links .nav-item .nav-link:not(:hover)::after {
+    transition: width 0.4s ease, transform 0.4s ease; /* Smooth reset transition */
+    width: 0; /* Shrink underline back to 0 */
+}
+.navbar-toggler {
+    outline: none; /* Removes the focus outline */
+    box-shadow: none; /* Removes any shadow */
+    background-color: transparent; /* Ensures no background */
+    transition: transform 0.3s ease; /* Smooth hover scaling */
+}
+
+.navbar-toggler:hover {
+    transform: scale(1.1); /* Scale slightly on hover */
+}
+
+/* Navbar Buttons */
+.nav-buttons {
+    display: flex;
+    gap: 1em;
+}
+
+.nav-button {
+    padding: 0.5em 1em;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.nav-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.register-button {
+    background-color: #5e00c7;
+    color: #ffffff;
+    border: none;
+}
+
+.register-button:hover {
+    background-color: #4b009c;
+}
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+}
+.section-title {
+    font-size: 2.5em;
+    font-weight: 800;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 800;
+    color: #5e00c7;
+    margin-bottom:5%;
+}
+.team-member, .partner {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    margin: 50px;
+    display: flex;
+    align-items: center;
+}
+.team-member img, .partner img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 1em;
+}
+.button {
+    padding: 1em;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin: 1em 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+footer {
+    background-color: #5e00c7;
+    color: #ffffff;
+    text-align: left;
+    padding: 2em;
+}
+
+.custom-footer {
+    background-color: #f8f9fa; /* Light background color */
+    border-top: 1px dashed #d3adf2; /* Dashed top border similar to image */
+    padding: 40px 20px;
+}
+
+.custom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.custom-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 100px;
+    background-color: #f0f0f0;
+}
+
+header h1 {
+    font-size: 75px;
+    letter-spacing: -6px;
+    color: #5e00c7;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 50px; /* Reduce font size */
+        letter-spacing: -3px; /* Adjust spacing */
+    }
+}
+
+/* Resize for small screens */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 30px; /* Further reduce font size */
+        letter-spacing: -1px; /* Adjust spacing */
+        word-wrap: break-word; /* Ensure text breaks if necessary */
+    }
+}
+
+/* Logo Section */
+.footer-logo-section {
+    flex: 1 1 100px;
+}
+
+.footer-logo {
+    max-width: 100px;
+}
+
+/* Social Media Icons */
+.footer-social-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.social-icon img {
+    width: 24px; /* Icon size */
+    height: 24px;
+}
+
+/* Footer Column Styles */
+.footer-column {
+    flex: 1 1 160px;
+}
+
+.footer-column h5 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.footer-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-list li {
+    margin-bottom: 8px;
+}
+
+.footer-list a {
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-list a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .custom-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column,
+    .footer-logo-section,
+    .footer-social-section {
+        flex: 1 1 100%;
+    }
+
+    .footer-logo {
+        margin-bottom: 20px;
+    }
+}
