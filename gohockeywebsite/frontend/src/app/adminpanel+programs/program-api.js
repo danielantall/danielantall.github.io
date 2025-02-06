@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const apiUrl = "http://127.0.0.1:5500/gohockeywebsite/frontend/src/app/adminpanel+programs/mockdata.json";
+    const apiUrl = "http://danielantall.github.io/gohockeywebsite/frontend/src/app/adminpanel+programs/mockdata.json";
 
     fetch(apiUrl)
         .then((res) => res.json())
